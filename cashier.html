@@ -1,0 +1,13 @@
+<!DOCTYPE html><html dir="rtl"><head><meta charset="utf-8"><title>كاشير</title>
+<style>body{font-family:sans-serif;text-align:center;padding:20px}input,button{padding:10px;margin:5px;font-size:16px}</style></head>
+<body>
+<div id="lic"><h2>ادخل كود الترخيص</h2><input id="k"><button onclick="if(document.getElementById('k').value.startsWith('ZAK-')){localStorage.lic=document.getElementById('k').value;location.reload()}else alert('الكود يبدأ بـ ZAK-')">تفعيل</button></div>
+<div id="app" style="display:none"><h2>كاشير البقالة - ZAK v1</h2>
+<input id="p" placeholder="اسم المنتج"><input id="s" type="number" placeholder="السعر">
+<button onclick="add()">اضافة</button><ul id="list"></ul><h3 id="total">الاجمالي: 0</h3>
+<button onclick="localStorage.clear();location.reload()">قفل البرنامج</button></div>
+<script>
+if(localStorage.lic){document.getElementById('lic').style.display='none';document.getElementById('app').style.display='block';}
+let t=0;function add(){let n=document.getElementById('p').value, s=parseInt(document.getElementById('s').value)||0;
+document.getElementById('list').innerHTML+=`<li>${n} - ${s} ريال</li>`;t+=s;document.getElementById('total').innerText='الاجمالي: '+t;}
+</script></body></html>
